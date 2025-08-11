@@ -1,80 +1,60 @@
-Sustainable Supplier Risk Monitor (Agentic AI + ESG)
-One-line pitch: Cloud-backed supply chain analytics with ESG integration and an Agentic AI that generates supplier-specific, prescriptive recommendations.
+# Sustainable Supplier Risk Monitor
 
-Overview
-This project analyzes supply chain performance while factoring in ESG (Environmental, Social, and Governance) scores to evaluate supplier sustainability. Using MySQL for backend data processing, Google Looker Studio for interactive visualizations, and a free Hugging Face LLM for AI-powered recommendations, the system delivers both quantitative metrics and qualitative insights for decision-making.
+## 📌 Project Overview
+The **Sustainable Supplier Risk Monitor** is an end-to-end analytics project designed to evaluate and monitor supplier performance through both operational and sustainability metrics.  
+The solution combines **AWS-hosted MySQL databases**, **SQL-based aggregations**, **Agentic AI for intelligent recommendations**, and **a Google Looker Studio dashboard** for interactive insights.
 
-Tech Stack
-Database: MySQL (local or AWS RDS)
+The system identifies high-risk suppliers based on defect rates, lead times, and ESG (Environmental, Social, and Governance) scores, providing actionable recommendations for mitigating supply chain risks.
 
-AI Model: HuggingFaceH4/zephyr-7b-beta (local inference, free to use)
+---
 
-Visualization: Google Looker Studio
+## 📊 Features
+- **Data Integration:**  
+  - Source dataset from [Kaggle: Supply Chain Analysis](https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis?resource=download)  
+  - Extended with SQL-derived supplier summary and risk classification tables
+  - AI-generated recommendations via Agentic AI
+- **Risk Scoring:**
+  - Classifies suppliers into `Low`, `Medium`, and `High` risk
+  - Incorporates ESG score thresholds for sustainable decision-making
+- **Interactive Dashboard:**
+  - Built in **Google Looker Studio**
+  - Includes KPIs, trend charts, ESG vs. Defect Rate correlations, and route/mode analysis
+- **AI Recommendations:**
+  - Uses `qwen2.5:0.5b-instruct` via Ollama for local inference
+  - Strict JSON output contract for easy integration with BI tools
 
-Languages: SQL, Python
+---
 
-Data Source: Kaggle – Supply Chain Analysis
+## 🖥️ Dashboard
+**[[https://lookerstudio.google.com/s/iOkI2e-PEbU]]**
 
-Workflow
-1. Data Preparation
-Original dataset imported from Kaggle into MySQL
+---
 
-Created views:
+## 🧠 Agentic AI Component
+- **Model:** `qwen2.5:0.5b-instruct` (via Ollama, runs locally)
+- **Purpose:** Generate supplier-specific recommendations based on risk, defect rate, lead time, ESG score, revenue share, and transport route/mode hints
+- **Output:** Strict JSON with:
+  - `trigger_summary`
+  - `recommendation`
+  - `confidence` (0–100)
+- **Fallback:** Rule-based engine if JSON parsing fails
 
-supplier_summary – aggregated defect rates, lead times, ESG scores
+---
 
-supplier_risk_summary – assigned High/Medium/Low risk levels based on thresholds
+## 🗄️ AWS Setup
+- **AWS S3:** Storage for raw CSV uploads
+- **AWS RDS (MySQL):**  
+  - Stores the supplier datasets and computed views
+  - Hosts tables such as:
+    - `supplier_summary`
+    - `supplier_risk_summary`
+    - `ai_recommendations`
+- **SQL Examples:**
+  - Risk classification using CASE conditions
+  - Joins for combining operational metrics with ESG data
 
-Exported processed CSVs for visualization
+---
 
-2. AI Recommendations
-For each supplier, metrics were passed into a structured prompt for HuggingFaceH4/zephyr-7b-beta:
 
-“You are an expert supply chain analyst. Given this supplier’s performance and ESG profile, suggest actionable steps to reduce risk and improve sustainability while maintaining cost efficiency.”
 
-Model output stored in ai_recommendations_<date>.csv
 
-Recommendations integrated into the dashboard alongside metrics
-
-3. Visualization
-Data blended in Looker Studio to allow cross-filtering across datasets
-
-KPIs, correlation tables, efficiency charts, and AI recommendations combined into one interactive view
-
-Dashboard Features
-(Live dashboard link here — replace with your own)
-
-Best ESG Score Supplier (KPI)
-
-Lowest Risk Supplier (KPI)
-
-ESG vs Defect Rate (Correlation Table)
-
-Shipping Efficiency by Risk Level (Bar Chart)
-
-Product Type Distribution (Donut Chart)
-
-Performance Over Time (Time Series)
-
-AI Recommendation Cards for each supplier
-
-Model Prompting & Workflow
-SQL Aggregation: Extracted supplier performance metrics from MySQL views
-
-Prompt Context: Merged ESG, operational, and delivery performance
-
-LLM Processing: Ran locally using HuggingFaceH4/zephyr-7b-beta
-
-Recommendation Output: Short, prioritized suggestions per supplier
-
-Dashboard Integration: Combined structured data with AI text output
-
-Future Work
-Convert Looker Studio dashboard to real-time refresh via cloud integration
-
-Expand AI to multi-scenario simulations (cost vs. ESG trade-offs)
-
-Explore Tableau Public as alternative (limited features compared to Looker Studio)
-
-License
-MIT © 2025 [Juily Pachundkar]
