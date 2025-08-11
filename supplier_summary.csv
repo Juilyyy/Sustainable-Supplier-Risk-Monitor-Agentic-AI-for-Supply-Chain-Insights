@@ -1,0 +1,6 @@
+supplier,orders,avg_lead_days,avg_ship_days,avg_defect_rate,avg_ship_cost,avg_total_cost,revenue,env_score,soc_score,gov_score,esg_score
+"Supplier 3",15,14.33,5.20,2.466,4.79,468.80,97795.98,90,63,42,65
+"Supplier 1",27,16.78,6.07,1.804,5.51,574.85,157528.98,78,77,48,68
+"Supplier 5",18,14.72,6.22,2.665,5.79,536.02,110343.48,71,89,44,68
+"Supplier 4",18,17.00,5.56,2.337,5.76,521.81,86468.97,49,72,45,55
+"Supplier 2",22,16.23,5.50,2.363,5.74,515.03,125467.45,84,94,43,74

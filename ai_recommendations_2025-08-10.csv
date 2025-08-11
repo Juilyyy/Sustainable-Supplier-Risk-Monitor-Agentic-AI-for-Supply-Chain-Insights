@@ -1,0 +1,6 @@
+supplier,risk_level,revenue,avg_defect_rate,avg_lead_days,esg_score,trigger_summary,recommendation,confidence
+Supplier 3,Medium,97795.98,2.466,14.33,65,Stable,Maintain supplier; monthly monitoring (Owner: Supplier Mgt).,90
+Supplier 1,Medium,157528.98,1.804,16.78,68,"Slow lead time, Critical revenue dependency","Negotiate expedited lanes; dual-source 20% with fastest alt (Owner: Procurement, 2 weeks). • Business continuity plan; pre-qualify backup supplier (Owner: Category Mgr, 2 weeks).",80
+Supplier 5,Low,110343.48,2.665,14.72,68,High defects,Start 30-day CAPA; 100% incoming inspection for next 2 shipments (Owner: Quality).,80
+Supplier 4,High,86468.97,2.337,17.00,55,"High risk, Low ESG, Slow lead time","Negotiate expedited lanes; dual-source 20% with fastest alt (Owner: Procurement, 2 weeks). • Request ESG remediation plan & quarterly scorecards (Owner: Supplier Mgt, 3 weeks).",80
+Supplier 2,Medium,125467.45,2.363,16.23,74,Slow lead time,"Negotiate expedited lanes; dual-source 20% with fastest alt (Owner: Procurement, 2 weeks).",80
